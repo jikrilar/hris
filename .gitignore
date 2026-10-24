@@ -1,0 +1,79 @@
+# Professional HRIS — Laravel, Vue/Inertia, Vite and Docker Compose.
+# Keep lockfiles, source configuration, docs, AGENTS.md and .pen designs versioned.
+
+# Dependencies and generated frontend assets
+/vendor/
+/node_modules/
+/public/build/
+/public/hot
+/public/storage
+/.vite/
+*.tsbuildinfo
+
+# Environment-specific values and local credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.example.*
+/auth.json
+/secrets/
+/docker/secrets/
+
+# Laravel runtime data: private evidence, exports, logs, sessions and caches.
+# Retain nested .gitignore placeholders supplied by the Laravel skeleton.
+/storage/**
+!/storage/**/
+!/storage/**/.gitignore
+/bootstrap/cache/**
+!/bootstrap/cache/**/
+!/bootstrap/cache/**/.gitignore
+
+# Test, coverage and analysis output
+/.phpunit.cache
+/.phpunit.result.cache
+/.pint.cache
+/.phpstan-cache/
+/.phpstan.cache/
+/.eslintcache
+/coverage/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+/tests/e2e/.auth/
+
+# Local container data, backups and personal Compose overrides
+/.docker-data/
+/docker/data/
+/docker/volumes/
+/backups/
+/compose.local.yml
+/compose.local.yaml
+/docker-compose.local.yml
+/docker-compose.local.yaml
+
+# Package-manager diagnostic logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local IDE files; allow shared VS Code project configuration
+/.idea/
+/.fleet/
+/.nova/
+/.vscode/*
+!/.vscode/extensions.json
+!/.vscode/settings.json
+!/.vscode/tasks.json
+!/.vscode/launch.json
+
+# Operating-system and editor temporary files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
