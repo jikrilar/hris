@@ -46,8 +46,8 @@
 | Date | 23 October 2026 (Asia/Jakarta) |
 | Approval | Approved by the project owner on 23 October 2026. Approval covers the execution plan and its structure; mandatory readiness and task/group acceptance gates remain applicable. |
 | Planning inventory | 7 phases; 33 task groups/planned branches; 280 tasks/planned task commits; 2383 explicit subtasks. |
-| Execution state | T-0001/T-0002 DONE; T-0003 DONE intent in its atomic task commit; G-000 ACTIVE; completed tasks 3. Remaining tasks TODO and other groups NOT_STARTED. No application or .pen implementation is asserted. |
-| Scope of this assignment | Finalize this TASK.md only. No branches, commits, PRs, designs, migrations, models, application changes, SIT.md or UAT.md are created now. |
+| Execution state | T-0001–T-0003 DONE; T-0004 DONE intent in its atomic task commit; G-000 REVIEW_PENDING; completed tasks 4. T-0005–T-0280 TODO and G-001–G-032 NOT_STARTED. No application or .pen implementation is asserted. |
+| Scope of this assignment | Current selected increment T-0004 freezes TASK.md source/readiness/traceability records and its exact task commit. G-000 integration and all later tasks remain separately gated; no application, .pen, migration, SIT or UAT artifact is created. |
 | Execution authority | The approved plan governs controlled sequential execution. Begin only the explicitly selected task/group after its Definition of Ready is verified, starting with mandatory G-000. |
 | Developer model | One developer using Codex CLI, one active group and one active task. |
 | Integration branch | Protected main; one group branch and one PR; individual task commits preserved. |
@@ -84,7 +84,9 @@ Authority: approved PRD → owner-accepted architecture (see G-000/T-0001 eviden
 
 **Current readiness findings.** PRD, Schema and Design System retain their existing owner approvals. On 24 October 2026 the project owner explicitly accepted the actual Architecture v1.0 file, including ADR-001–ADR-015, as the official baseline for database, UI and implementation. Its verified canonical hash is reconciled above; the historical mismatch and approval record are preserved in [T-0001](#t-0001). This resolves the missing Architecture acceptance and fingerprint gate, without completing G-000, approving a screen or validating implementation/release. Repository merge-policy readiness now passes as recorded in T-0001.
 
-[T-0003](#t-0003) refreshed the affected Design System Schema citations from v0.1/draft to the approved v1.0 baseline and current hash, with original approvals and superseded fingerprints preserved in its execution evidence. The bounded attendance clarification is owner-accepted; runtime validation and the T-0004 documentation freeze remain separate gates.
+**Frozen documentation reference — T-0004, 24 October 2026 (Asia/Jakarta).** The four canonical paths/versions/hashes above identify the accepted corrected bytes at Git reference `f18b17c9d0a761b8a8aa2f2c873ef7d5ec2e7830`. T-0004 changes only TASK.md; historical approvals/correction evidence remain in T-0001–T-0003. The resulting T-0004 commit is recorded in execution metadata. G-000 merge and integrated-main checks remain pending.
+
+[T-0003](#t-0003) refreshed the affected Design System Schema citations from v0.1/draft to the approved v1.0 baseline and current hash, with original approvals and superseded fingerprints preserved in its execution evidence. The bounded attendance clarification is owner-accepted and the T-0004 documentation freeze is verified; runtime validation remains a later gate.
 
 **Attendance projection gate.** Schema §11.5 retains arrival values on_time/late/not_applicable/unknown and now includes completeness values complete/missing_in/missing_out/not_applicable/unknown/inconsistent. PRD §14.1 and Design System VQA-12 require early departure, simultaneous late+early, and inconsistent completeness. [T-0002](#t-0002) records a version-bound late/early projection proof and the proposed smallest completeness correction (add inconsistent to ck_ae_05; retain ck_ae_01). The project owner explicitly accepted that reviewed proposal on 24 October 2026; [T-0003](#t-0003) applies the bounded correction and records the resulting fingerprints before [T-0095](#t-0095) creates affected migrations. No Vue workaround, silent semantic deletion or automatic source approval is permitted.
 
@@ -586,12 +588,12 @@ This phase contains [G-000](#g-000). All groups start NOT_STARTED and all tasks 
 | Source references | PRD §1, §14.1, §24–§25; Architecture §1, §15, §26; Schema §11.5, §20, §23; Design System §2, §18, §30 |
 | Previous group dependency | None; execution repository entry prerequisites |
 | Expected deliverables | 4 verified task increments: Verify repository entry and authoritative source approvals; Adjudicate attendance punctuality and completeness projection; Record the approved minimal source correction and refresh stale citations; Freeze documentation and planning execution references |
-| Technical risks | Architecture has established-baseline metadata rather than explicit owner approval; Design System embeds stale schema status/hash; attendance state representation remains to be adjudicated. |
-| Owner review | Owner confirms architecture acceptance if no authoritative approval record can be located; owner reviews any actual schema-contract correction. Existing PRD/schema/design approvals are retained. |
+| Technical risks | Architecture acceptance and bounded attendance/citation correction are evidenced by T-0001–T-0003; T-0004 freezes the corrected documentation. Group PR review/merge and integrated-main checks remain pending. |
+| Owner review | Architecture acceptance and the attendance technical correction were explicitly accepted by the owner on 24 October 2026, recorded in T-0001/T-0003. Existing PRD/schema/design approvals are retained; group PR review/integration remain pending. |
 | Group verification | DOC plus all activated §23 task/group packs and exact targeted checks specified in each task; on main use Architecture§24.3 integrated suite. |
 | Pull Request title | docs(g-000): Documentation Baseline Readiness |
 | Merge prerequisites | Every task DONE/committed; group acceptance and required CI passed; actual required owner review; no blocker; reviewed diff; merge preserves individual task commits; verify integrated main before next group. |
-| Group status | ACTIVE |
+| Group status | REVIEW_PENDING |
 
 **Group acceptance criteria**
 
@@ -607,7 +609,7 @@ This phase contains [G-000](#g-000). All groups start NOT_STARTED and all tasks 
 | 1 | [T-0001](#t-0001) | Verify repository entry and authoritative source approvals | `docs(readiness): record source authority and execution entry (T-0001)` | Execution entry; §8 | DONE |
 | 2 | [T-0002](#t-0002) | Adjudicate attendance punctuality and completeness projection | `docs(schema): verify lossless attendance state projection (T-0002)` | T-0001 | DONE |
 | 3 | [T-0003](#t-0003) | Record the approved minimal source correction and refresh stale citations | `docs(schema): reconcile approved source references (T-0003)` | T-0002 | DONE |
-| 4 | [T-0004](#t-0004) | Freeze documentation and planning execution references | `docs(plan): freeze sequential execution baseline (T-0004)` | T-0003 | TODO |
+| 4 | [T-0004](#t-0004) | Freeze documentation and planning execution references | `docs(plan): freeze sequential execution baseline (T-0004)` | T-0003 | DONE |
 
 <a id="t-0001"></a>
 
@@ -946,17 +948,17 @@ Observed: `PASS: 15 projection cases; strict grace/overnight/half-us boundaries;
 | Git Commit | `docs(plan): freeze sequential execution baseline (T-0004)` |
 | Definition of Done | The documentation milestone has no unresolved approval or state-contract blocker. All listed subtasks and applicable task checks pass; reviewed bounded diff, one exact task commit and status/evidence recorded as §9 requires. |
 | Risk / Notes | Stay inside the listed contract and owned boundaries. Stop on an unapproved source change or missing real dependency; do not add unrelated refactoring. |
-| Status | TODO |
+| Status | DONE |
 
 **Ordered subtasks — all belong to this task’s single commit**
 
-- [ ] Verify actual architecture acceptance and accepted attendance resolution, retaining the previous task evidence rather than assuming approvals.
-- [ ] Freeze source paths/versions/hashes and reference the accepted corrected baseline where a prior task changed it.
-- [ ] Validate all group/task IDs, exact branches, one-task-one-commit subjects, earlier-only dependencies and all source-to-task maps.
-- [ ] Record the 44 screen references as DRAFT/not authored and preserve TODO/NOT_STARTED status for every unexecuted task/group.
-- [ ] Review the documentation milestone with the owner and identify G-001 as eligible only after this group merges and main is verified.
-- [ ] Run the task-specific verification listed below and every already-applicable shared gate; record exact commands/results and any not-yet-applicable check with its activating task in §23. Never mark an unexecuted or failed check passed.
-- [ ] Review the bounded diff and acceptance evidence, update only this task’s status/evidence row in TASK.md, and create exactly one commit with subject "docs(plan): freeze sequential execution baseline (T-0004)". Record its resulting SHA in the PR/execution log rather than amending this commit to contain its own SHA.
+- [x] Verify actual architecture acceptance and accepted attendance resolution, retaining the previous task evidence rather than assuming approvals.
+- [x] Freeze source paths/versions/hashes and reference the accepted corrected baseline where a prior task changed it.
+- [x] Validate all group/task IDs, exact branches, one-task-one-commit subjects, earlier-only dependencies and all source-to-task maps.
+- [x] Record the 44 screen references as DRAFT/not authored and preserve TODO/NOT_STARTED status for every unexecuted task/group.
+- [x] Review the documentation milestone with the owner and identify G-001 as eligible only after this group merges and main is verified.
+- [x] Run the task-specific verification listed below and every already-applicable shared gate; record exact commands/results and any not-yet-applicable check with its activating task in §23. Never mark an unexecuted or failed check passed.
+- [x] Review the bounded diff and acceptance evidence, update only this task’s status/evidence row in TASK.md, and create exactly one commit with subject "docs(plan): freeze sequential execution baseline (T-0004)". Record its resulting SHA in the PR/execution log rather than amending this commit to contain its own SHA.
 
 **Acceptance criteria**
 
@@ -967,7 +969,20 @@ Observed: `PASS: 15 projection cases; strict grace/overnight/half-us boundaries;
 
 - DOC; full task/dependency/count/coverage review against §29; git diff --check.
 
-**Execution evidence to fill only after execution:** result/status; actual commands and outcomes; source/design/runtime references; task commit in PR log; blocker or limitation. No passing result is prefilled.
+**Execution evidence — 24 October 2026 (Asia/Jakarta): documentation freeze verified; T-0004 DONE intent in its exact atomic commit.**
+
+- **Ready / exact scope:** T-0004 only, G-000 / `docs/g000-baseline-readiness`. Before changes, `git status --short --branch`, `git branch --show-current`, `git log -4 --oneline`, `git diff --check`, `git diff --stat`, `git diff --cached` showed the exact branch, a clean tree and empty index. `git branch -avv`, `git remote -v`, `git fetch origin` and `git log main..HEAD --format='%H %s'` verify origin `https://github.com/jikrilar/hris.git`, main/base `ac8617aad8cb1d7ed4b658e63450426f452a7a54` and the existing ordered G-000 history. No branch recreation or main mutation is needed within this group.
+- **Actual predecessor evidence:** T-0001 `927db74e6766f9176b92f57d8930090842f4291d`; T-0002 `7b6334b959c8bb92003d02382faa78a081a7385b`; direct predecessor T-0003 `f18b17c9d0a761b8a8aa2f2c873ef7d5ec2e7830`. `git show --format=fuller --stat f18b17c` and read-only ancestry/exact-subject assertions verify actual commits; each has DONE evidence and seven evaluated/checked subtasks. Previous task evidence, source decisions, original approvals and historical superseded hashes are preserved verbatim, not rewritten to insert self-SHAs.
+- **Scoped context / freeze identity:** read complete T-0004 including Group completion, G-000 metadata/acceptance/inventory, direct dependency evidence, §11–§12 entries, applicable AGENTS and §1–§9/§23–§28 rules; inspect current §29/§30 and expand into every group/task catalog and §20–§22 map through a read-only parser. Unchanged source/rule slices already loaded in the session were reused only after current fingerprint/diff verification. Incoming TASK SHA-256 is `1ee89327cedcc505907e118b25980cfadf7e9165e9790a3b77fdbecdd6860a76`; root AGENTS is `011ee57d325cc5c43b39ca1deb5796c50183b88cb792f6167753a13f29a15ab2`. The four canonical paths, versions, approvals and hashes in §2 are frozen to the corrected source bytes at actual Git reference `f18b17c9d0a761b8a8aa2f2c873ef7d5ec2e7830`; all four source files are unchanged by T-0004. Current TASK bytes/SHA are identified by the resulting task commit in execution metadata, not a self-referential hash.
+- **Authority and state-contract gate PASS:** Architecture v1.0 acceptance is the owner's explicit 24 October decision recorded in T-0001, bound to actual hash and ADR-001–ADR-015. The owner's subsequent explicit approval of the reviewed T-0002 attendance proposal is retained in T-0003 and Schema §11.5. The accepted correction adds only inconsistent completeness/ck_ae_05, keeps ck_ae_01/ck_ae_04/event/history guards, and documents independent version-bound late/early projections. PRD §14.1/§19, Schema §11.5/§20/§23 and Design System §2/§18/§30/VQA-12 agree on independent dimensions, missing-out presence, exact boundaries and reviewed unknown end. No source-approval or state-contract blocker remains for this documentation freeze; runtime acceptance is not inferred.
+- **Full static plan audit PASS:** read-only `python3 - <<'PY'` parser checked all 7 phase headings, 33 groups, 33 unique exact branches, 280 unique ordered task IDs and exact ID-bearing subjects, all required metadata, allowed files, concrete acceptance/verification/Done blocks, 2,383 ordered subtasks, one parent/group inventory membership per task, and matching task/group dependency matrices. Planned metadata, branch names, subjects and every subtask's text were compared to initialized approved-plan baseline `ac8617a`; execution status/evidence changes are distinguished from plan edits. All immediate predecessors are required, extra dependencies point earlier, no cycle/forward link exists, and every next-group first task explicitly requires the preceding MERGED group/current main gate. All internal anchor targets are valid and unique.
+- **Full source/map audit PASS:** exact source catalogs agree with all rows of §20–§22: 136 requirements, 28 BR, 21 OD, 18 WF, 48 AC, 15 ADR, 44 views, 20 VQA, 14 DSD, 27 INV and 16 DBD. Every mapped task exists; requirement/workflow/AC/ADR/invariant/decision maps retain non-design execution/verification paths and future evidence gates. All source IDs in every task's Source References exist in canonical sources. Each view has exactly one primary authoring and one distinct primary implementation task, a later owner-approval task and earlier real-backend prerequisites. The 26 foundation controls and 30 application patterns are retained. These are planned coverage results, not feature acceptance.
+- **Full persistence map audit PASS:** all 90 tables occur once in Schema §23.1 order and TASK §22.1, with matching dictionary references/owners (Shared infrastructure aliases normalized), in-scope migration tasks and nondecreasing migration-task sequence. All 993 actual dictionary columns, 221 declared FK references, 303 secondary UNIQUE/INDEX entries and 187 named CHECKs were counted. Every non-self parent precedes its child and its migration task; self-FKs remain within their table. No constraints were disabled and no database was contacted. The existing T-0003 correction changes no table/column/index/FK count or order. Planned early Workforce/Analytics readers/outbox, Attendance/Leave conflict contracts and workflow-before-adapter/UI ordering were reviewed against the total dependency sequence; runtime rail enforcement remains at its activation tasks.
+- **Screen and unexecuted-state honesty PASS:** all 44 §21 references remain `DRAFT; no authored/approved frame yet`, with canonical future asset `design/phase-1/professional-hris.pen`. No .pen asset exists in the repository. T-0005–T-0280 remain TODO, G-001–G-032 remain NOT_STARTED, and no later group is active. No source/document approval is relabeled as screen, implementation, benchmark, runtime, deployment or release acceptance.
+- **Milestone review / integration boundary:** the full audit findings, source-acceptance evidence and conditional G-001 eligibility were presented to the owner in this execution conversation before commit. Existing explicit owner decisions satisfy G-000's stated Architecture/schema review requirements; no additional source or business change is proposed by this freeze, and no new owner approval is invented. G-000's group PR review/merge and post-merge main verification remain pending. GitHub API recheck confirms protected main, merge-commit=true and squash/rebase=false; `gh pr list --state all --head docs/g000-baseline-readiness --json number,state,mergedAt,url` returns `[]`. This task-only instruction does not authorize creating/pushing a group PR or merging. G-000 is REVIEW_PENDING after this commit, not MERGED. No next-group branch may be created yet.
+- **Checks / limits:** `sha256sum AGENTS.md docs/phase-1/*.md`, source-to-register/embedded-reference SHA-256 and byte comparisons, full read-only audit above, `git diff --check`, bounded diff/index and secrets/private-data review pass. Initial read-only parser assertions exposed two parser-shape assumptions (task boundaries include heading level 4; VQA uses two digits); those were corrected without editing sources or weakening catalog/coverage checks, and the full audit was rerun successfully. Only DOC is active. Other §23 packs remain NOT_YET_APPLICABLE with their exact activating/follow-up task IDs unchanged: dependencies T-0065/T-0066 → T-0070, Compose T-0067 → T-0258, ARCH T-0068 → T-0265, UNIT/E2E T-0069 → T-0265/T-0267, PHP T-0070 → T-0072, MIG/DB T-0073 → T-0098/T-0265, RACE T-0080 → T-0265; later private-file/outbox/retention/restore/visual/benchmark/SIT/UAT packs retain §23 gates. Application/dependency/runner/CI/image artifacts do not exist yet; CI activates at T-0070 and no absent runtime check is credited as passing. No destructive, load, real-data or network-delivery operation was performed.
+- **Acceptance / exact commit:** all task acceptance conditions and seven subtasks pass for the documentation freeze. §2/current readiness, §27 progress, §29 audit and §30 conditional handoff are reconciled without changing the approved plan inventory or any future task/group contract. Only TASK.md changes. Planned subject is exactly `docs(plan): freeze sequential execution baseline (T-0004)`; resulting SHA is reported in the execution response, not inserted into its own commit. No push, PR, merge, main check on a merge SHA or release is claimed. No T-0004 blocker remains. Next planned task is T-0005 in G-001, dependency-eligible **only after** G-000 actually merges and required integrated-main checks pass; it is not started.
+
 
 **Group completion**
 
@@ -14921,19 +14936,19 @@ If real defects require new work beyond the current atomic task, amend TASK.md t
 
 | Phase | Groups | Total tasks | Completed | Status |
 | --- | --- | --- | --- | --- |
-| Phase 0 | G-000–G-000 | 4 | 3 | ACTIVE |
+| Phase 0 | G-000–G-000 | 4 | 4 | REVIEW_PENDING |
 | Phase 1 | G-001–G-006 | 60 | 0 | NOT_STARTED |
 | Phase 2 | G-007–G-011 | 38 | 0 | NOT_STARTED |
 | Phase 3 | G-012–G-022 | 85 | 0 | NOT_STARTED |
 | Phase 4 | G-023–G-028 | 62 | 0 | NOT_STARTED |
 | Phase 5 | G-029–G-030 | 15 | 0 | NOT_STARTED |
 | Phase 6 | G-031–G-032 | 16 | 0 | NOT_STARTED |
-| Total | 33 | 280 | 3 | CONTROLLED EXECUTION |
+| Total | 33 | 280 | 4 | CONTROLLED EXECUTION |
 
 | Tracking field | Initial value / update rule |
 | --- | --- |
-| Active group/task | G-000 / None; T-0003 complete, T-0004 not started |
-| Completed task commits | 3 on creation of this atomic T-0003 commit; predecessor SHAs in execution evidence, current SHA in execution response |
+| Active group/task | G-000 REVIEW_PENDING / None; T-0004 complete, no later task started |
+| Completed task commits | 4 on creation of this atomic T-0004 commit; predecessor SHAs in execution evidence, current SHA in execution response |
 | Merged group PRs | 0 |
 | Approved .pen major views | 0/44; source Design System approval remains separately valid |
 | Runtime tests/benchmark/release | Not executed; not achieved by this plan |
@@ -14965,37 +14980,37 @@ If real defects require new work beyond the current atomic task, amend TASK.md t
 
 ## 29. Final Planning Consistency Audit
 
-The following checks were performed on **this planning artifact and its source catalogs**, not on application implementation. All source documents remained byte-identical to the hashes in §2.
+T-0004 reverified the complete planning structure and source catalogs on 24 October 2026 against the accepted corrected source hashes in §2 and the initialized approved-plan baseline `ac8617a`. The original planning audit is preserved in Git; this table records the current documentation freeze. These results establish static coverage/readiness, not application implementation or group integration.
 
 | Audit | Result detail | Status |
 | --- | --- | --- |
-| Approval finalization | Version 1.0 and Approved Execution Plan — Controlled Sequential Execution record the owner's acceptance. The plan's approval does not complete G-000 or any task/group. | PASS — approval consistency |
-| Backlog preservation | All 7 phases, 33 groups, 280 tasks, 2383 ordered subtasks, IDs, dependencies, branch names, planned commit messages and TODO/NOT_STARTED statuses are unchanged from the reviewed plan. | PASS — exact before/after comparison |
-| Scoped context protocol | §24.1 requires complete active-task context, parent/dependency/global/source slices, freshness checks and expansion where needed; all mandatory readiness and execution gates remain intact. | PASS — protocol consistency |
-| Git mapping | 33 groups have unique exact branches; 280 tasks have unique stable IDs, one parent and one exact ID-bearing planned commit. | PASS — planning structure |
-| Task completeness | Every task has all required metadata, concrete ordered checkboxes, observable acceptance, verification, bounded files, notes/status and task-specific Done; total 2383 subtasks. | PASS — planning structure |
-| Sequential graph | Immediate predecessor chain plus explicit earlier-only task dependencies; every new group requires previous PR merge/current main; no cycles/forward dependencies. | PASS — graph audit |
-| Source inventory | 28 BR/21 OD/136 requirements/18 WF/48 AC/15 ADR/44 views/90 tables/27 INV/16 DBD verified against actual canonical sources. | PASS — source catalog/count audit |
-| Requirements and workflow execution | Every requirement has non-design execution/verification tasks; all 18 workflows have actual planned backend/UI/evidence path. | PASS — planned coverage, not implementation |
-| Acceptance | All 48 ACs have explicit task and test/evidence paths; design-only work is not backend proof. | PASS — planned coverage |
-| Design | All 44 major views have one primary authoring task, an actual future owner-approval task and one implementation task; all initial screen states DRAFT. | PASS — no invented frames/approvals |
-| Persistence | All 90 tables are assigned once in exact source order; every non-self FK parent is earlier; test after each bounded slice; no all 90-table commit. | PASS — static migration feasibility |
-| Cross-module safety | Real early readers/dirty/outbox contracts precede consumers; complete coordinators precede exposed invariant-sensitive adapters/UI; no production successful stubs. | PASS — sequencing review; runtime evidence remains TODO |
-| Source readiness honesty | PRD/Schema/Design owner approvals retained; Architecture explicit acceptance and attendance/citation adjudication remain initial gates. | OPEN EXECUTION GATES — not fabricated approval |
-| Operational/release honesty | Host/off-host access, real-device checks, benchmark, SIT/UAT, restore, deployment and release acceptance are future verified gates. | TODO — no achievement claimed |
-| Deliverable boundary | Only docs/phase-1/TASK.md is produced as a user artifact. No source edits, Git mutations, .pen/code/migrations/models/SIT/UAT files are executed or generated in the project. | PASS — planning-only scope |
+| Approval finalization | Approved plan remains v1.0. Explicit owner Architecture acceptance is retained in T-0001; bounded attendance correction acceptance is retained in T-0003 and Schema §11.5. No source/state-contract acceptance is inferred from plan approval. | PASS — actual source decisions verified |
+| Backlog preservation | 7 phases, 33 groups, 280 tasks and 2,383 ordered subtasks. Planned task metadata, subtask text, IDs, dependencies, exact branches and subjects agree with the initialized approved plan. T-0001–T-0004 are documentation increments; every future task/group retains TODO/NOT_STARTED. | PASS — full structure/baseline comparison |
+| Scoped context protocol | Complete selected-task/group/dependency/global/source context verified; full audit reads every task/group catalog and all source-to-task maps programmatically, without repeatedly loading the whole backlog into active context. | PASS — §24.1 maintained |
+| Git mapping | 33 unique exact group branches and 280 unique ID-bearing task commit subjects match group inventories and matrices. Three predecessor task commits verified; T-0004 is the fourth atomic commit. No group PR/merge exists yet. | PASS — local task identity; integration pending |
+| Task completeness | All 280 tasks have required metadata, bounded files, concrete ordered subtasks, acceptance, verification and task-specific Done; each has one parent and an inventory row with matching title/subject/status. | PASS — full task audit |
+| Sequential graph | Every task requires its immediate predecessor; extras point earlier. Group matrices agree with task metadata. Every later group's first task requires the previous MERGED group/current main; no cycles or forward dependencies. | PASS — full graph audit |
+| Source inventory | 28 BR, 21 OD, 136 requirements, 18 WF, 48 AC, 15 ADR, 44 views, 26 foundation controls, 30 application patterns, 20 VQA, 14 DSD, 90 tables, 27 INV and 16 DBD match actual canonical sources. | PASS — catalog/count audit |
+| Requirements and workflow execution | §20 maps cover every source requirement/BR/OD/workflow with valid task references and non-design execution/verification paths. All task Source References resolve to existing source IDs. | PASS — static planned coverage |
+| Acceptance | All 48 ACs have valid task/test/evidence paths; later implementation, MySQL, device, SIT/UAT and release results remain unexecuted. | PASS — planned coverage only |
+| Design | Each of 44 source views has one primary design task, one later owner-approval task, one distinct primary implementation task and earlier backend prerequisites. All references remain DRAFT/not authored; no .pen asset exists. | PASS — no fabricated design approval |
+| Persistence | 90 tables/993 columns/221 FKs/303 secondary keys/187 CHECKs match the corrected schema. Every table maps once in exact §23.1 order to an in-scope migration task; all non-self FK parents precede children, self-FKs stay on their table, and slice-task order is nondecreasing. | PASS — static feasibility; real MySQL gates remain |
+| Cross-module safety | Planned early readers/dirty/outbox and conflict contracts precede consumers; coordinating workflows precede guarded adapters/UI. The total dependency chain is preserved. No runtime collaborator or successful production stub is claimed. | PASS — planned sequence review; runtime evidence future |
+| Source readiness honesty | T-0001/T-0003 supply genuine Architecture/state-contract decisions. All four current source paths/versions/hashes are frozen at §2; corrected source bytes remain unchanged by T-0004. | PASS — documentation source gate resolved |
+| Operational/release honesty | Hosting/off-host access, genuine-device, benchmark, SIT/UAT, restore, deployment and release gates retain their activating tasks and required future evidence. | NOT_YET_APPLICABLE — no achievement claimed |
+| Deliverable/integration boundary | T-0004 changes TASK.md only and creates its one exact task commit. G-000 becomes REVIEW_PENDING; no push/PR/merge or verified integrated-main result is claimed. G-001 remains NOT_STARTED and ineligible until actual merge/main verification. | PASS — selected scope preserved |
 
-A full source coverage matrix establishes a plan, not completed software. Execution must recheck actual prerequisite, code and evidence at each selected task. No branch, task commit, PR, UI screen, release tag, performance result or application test result exists merely because it is listed here.
+There are no unresolved documentation source-approval or attendance state-contract blockers. Group PR review/integration and required checks on the actual merged main remain separate pending gates. Static coverage cannot substitute for future implementation, screen approval, runtime tests or release acceptance.
 
 <a id="sec-30"></a>
 
 ## 30. Immediate Next Eligible Task
 
-**Next group: [G-000](#g-000) — Documentation Baseline Readiness. Next task: [T-0001](#t-0001) — Verify repository entry and authoritative source approvals.**
+**Current handoff: G-000 documentation freeze complete in its four task commits; group REVIEW_PENDING, not MERGED. No later implementation/design task is dependency-eligible yet.**
 
-When execution of G-000/T-0001 is explicitly selected in the initialized target repository, the first action is the mandatory readiness check. Its exact branch is `docs/g000-baseline-readiness` and planned commit is `docs(readiness): record source authority and execution entry (T-0001)`. If the target repository/main is absent, record that specific blocker rather than creating an unrequested repository/genesis commit. Existing approved source documents need no repeat approval; locate architecture acceptance and resolve only the identified technical projection/citation issue through [T-0002](#t-0002) and [T-0003](#t-0003).
+The next planned group is [G-001](#g-001) — pen.dev Design Foundations, and its first task is [T-0005](#t-0005) — Verify installed pen.dev tooling and Git-safe editing. Its exact future branch is `design/g001-design-foundations`. It may start only after the G-000 PR actually merges while preserving the four task commits and required checks pass on that integrated main SHA. Any owner-authorized PR/integration action must follow §25; T-0004's task-only scope does not perform or pre-approve it.
 
-The project owner has approved this plan for controlled sequential execution. All tasks remain TODO and all groups remain NOT_STARTED. G-000 remains mandatory: Architecture approval verification, attendance state-contract review and the necessary Schema-reference refresh must pass before its PR can merge and G-001 can start. Later UI slicing requires the exact approved frames, and every next group requires the preceding merged/verified main. Plan approval supplies no task completion, group merge, screen approval or release acceptance.
+Architecture acceptance, the attendance correction and source-citation refresh have real evidence in T-0001–T-0003. T-0004 freezes their actual corrected baseline and audits the full inventory/maps. T-0005–T-0280 remain TODO, G-001–G-032 remain NOT_STARTED and all 44 screen references remain DRAFT/not authored. No next task or next-group branch has been started.
 
 <a id="sec-31"></a>
 
