@@ -46,7 +46,7 @@
 | Date | 23 October 2026 (Asia/Jakarta) |
 | Approval | Approved by the project owner on 23 October 2026. Approval covers the execution plan and its structure; mandatory readiness and task/group acceptance gates remain applicable. |
 | Planning inventory | 7 phases; 33 task groups/planned branches; 280 tasks/planned task commits; 2383 explicit subtasks. |
-| Execution state | T-0001 DONE intent in its atomic task commit; G-000 ACTIVE; completed tasks 1. All other tasks TODO and other groups NOT_STARTED. No application or .pen implementation is asserted. |
+| Execution state | T-0001 DONE; T-0002 DONE intent in its atomic task commit; G-000 ACTIVE; completed tasks 2. All other tasks TODO and other groups NOT_STARTED. No application or .pen implementation is asserted. |
 | Scope of this assignment | Finalize this TASK.md only. No branches, commits, PRs, designs, migrations, models, application changes, SIT.md or UAT.md are created now. |
 | Execution authority | The approved plan governs controlled sequential execution. Begin only the explicitly selected task/group after its Definition of Ready is verified, starting with mandatory G-000. |
 | Developer model | One developer using Codex CLI, one active group and one active task. |
@@ -86,7 +86,7 @@ Authority: approved PRD → owner-accepted architecture (see G-000/T-0001 eviden
 
 The approved Design System still embeds a pre-approval schema v0.1 status/hash in §2/§29/§30. Use the current schema metadata/hash above; [T-0003](#t-0003) schedules only the necessary citation/status refresh during future execution. The sources are **not modified by this planning assignment**.
 
-**Attendance projection gate.** Schema §11.5 stores scalar punctuality values on_time/late/not_applicable/unknown and completeness values complete/missing_in/missing_out/not_applicable/unknown. PRD §14.1 and Design System VQA-12 require early departure, simultaneous late+early, and inconsistent completeness. [T-0002](#t-0002) must prove lossless reproducibility from preserved evidence/segments or define the smallest technical correction; [T-0003](#t-0003) records owner-reviewed acceptance before [T-0095](#t-0095) creates affected migrations. No Vue workaround, silent semantic deletion or automatic source approval is permitted.
+**Attendance projection gate.** Schema §11.5 stores scalar punctuality values on_time/late/not_applicable/unknown and completeness values complete/missing_in/missing_out/not_applicable/unknown. PRD §14.1 and Design System VQA-12 require early departure, simultaneous late+early, and inconsistent completeness. [T-0002](#t-0002) records a version-bound late/early projection proof and the proposed smallest completeness correction (add inconsistent to ck_ae_05; retain ck_ae_01). The combined contract is not yet accepted; [T-0003](#t-0003) must record owner-reviewed acceptance before [T-0095](#t-0095) creates affected migrations. No Vue workaround, silent semantic deletion or automatic source approval is permitted.
 
 No .pen screen, approved node/revision, installed package lockfile, running application, executed MySQL test or benchmark result was supplied. Hosting/domain, actual off-host recovery/control endpoint and key custody remain deployment prerequisites, resolved in [T-0250](#t-0250); they do not block planning/local deterministic work. OD-21 real-data validation and per-category retention approval remain separate existing gates.
 
@@ -605,7 +605,7 @@ This phase contains [G-000](#g-000). All groups start NOT_STARTED and all tasks 
 | Order | Task ID | Task title | Planned commit | Dependency | Status |
 | --- | --- | --- | --- | --- | --- |
 | 1 | [T-0001](#t-0001) | Verify repository entry and authoritative source approvals | `docs(readiness): record source authority and execution entry (T-0001)` | Execution entry; §8 | DONE |
-| 2 | [T-0002](#t-0002) | Adjudicate attendance punctuality and completeness projection | `docs(schema): verify lossless attendance state projection (T-0002)` | T-0001 | TODO |
+| 2 | [T-0002](#t-0002) | Adjudicate attendance punctuality and completeness projection | `docs(schema): verify lossless attendance state projection (T-0002)` | T-0001 | DONE |
 | 3 | [T-0003](#t-0003) | Record the approved minimal source correction and refresh stale citations | `docs(schema): reconcile approved source references (T-0003)` | T-0002 | TODO |
 | 4 | [T-0004](#t-0004) | Freeze documentation and planning execution references | `docs(plan): freeze sequential execution baseline (T-0004)` | T-0003 | TODO |
 
@@ -696,17 +696,17 @@ This phase contains [G-000](#g-000). All groups start NOT_STARTED and all tasks 
 | Git Commit | `docs(schema): verify lossless attendance state projection (T-0002)` |
 | Definition of Done | Every approved classification has either a reproducible lossless projection proof or a precise proposed technical correction; the decision needed by T-0003 is explicit. All listed subtasks and applicable task checks pass; reviewed bounded diff, one exact task commit and status/evidence recorded as §9 requires. |
 | Risk / Notes | Stay inside the listed contract and owned boundaries. Stop on an unapproved source change or missing real dependency; do not add unrelated refactoring. |
-| Status | TODO |
+| Status | DONE |
 
 **Ordered subtasks — all belong to this task’s single commit**
 
-- [ ] Compare PRD §14.1/§19 and Design System VQA-12 with Schema §11.5 punctuality/completeness CHECKs, effective bounds and evaluation segments.
-- [ ] Build concrete truth-table examples for on-time, late-only, early-only, late-plus-early, missing-in, present/missing-out, inconsistent overnight evidence and reviewed unknown end.
-- [ ] Trace each example through persisted source/evaluation fields to a typed DTO and historical/report reproduction; reject a Vue-only calculation or a lossy single status.
-- [ ] Determine whether deterministic projection is fully reproducible from preserved evidence or an explicit flag/state/CHECK revision is required; identify exact affected columns and constraints without redesigning unrelated tables.
-- [ ] Record the smallest proposed technical resolution and its tests for owner review; keep the issue open until the proof is accepted.
-- [ ] Run the task-specific verification listed below and every already-applicable shared gate; record exact commands/results and any not-yet-applicable check with its activating task in §23. Never mark an unexecuted or failed check passed.
-- [ ] Review the bounded diff and acceptance evidence, update only this task’s status/evidence row in TASK.md, and create exactly one commit with subject "docs(schema): verify lossless attendance state projection (T-0002)". Record its resulting SHA in the PR/execution log rather than amending this commit to contain its own SHA.
+- [x] Compare PRD §14.1/§19 and Design System VQA-12 with Schema §11.5 punctuality/completeness CHECKs, effective bounds and evaluation segments.
+- [x] Build concrete truth-table examples for on-time, late-only, early-only, late-plus-early, missing-in, present/missing-out, inconsistent overnight evidence and reviewed unknown end.
+- [x] Trace each example through persisted source/evaluation fields to a typed DTO and historical/report reproduction; reject a Vue-only calculation or a lossy single status.
+- [x] Determine whether deterministic projection is fully reproducible from preserved evidence or an explicit flag/state/CHECK revision is required; identify exact affected columns and constraints without redesigning unrelated tables.
+- [x] Record the smallest proposed technical resolution and its tests for owner review; keep the issue open until the proof is accepted.
+- [x] Run the task-specific verification listed below and every already-applicable shared gate; record exact commands/results and any not-yet-applicable check with its activating task in §23. Never mark an unexecuted or failed check passed.
+- [x] Review the bounded diff and acceptance evidence, update only this task’s status/evidence row in TASK.md, and create exactly one commit with subject "docs(schema): verify lossless attendance state projection (T-0002)". Record its resulting SHA in the PR/execution log rather than amending this commit to contain its own SHA.
 
 **Acceptance criteria**
 
@@ -717,7 +717,152 @@ This phase contains [G-000](#g-000). All groups start NOT_STARTED and all tasks 
 
 - Read-only truth-table review; compare Schema ck_ae_04/ck_ae_05/ck_ae_01 and Design System §30; DOC.
 
-**Execution evidence to fill only after execution:** result/status; actual commands and outcomes; source/design/runtime references; task commit in PR log; blocker or limitation. No passing result is prefilled.
+**Execution evidence — 24 October 2026 (Asia/Jakarta): T-0002 analysis complete; proposed contract remains OPEN for T-0003 owner review.**
+
+**Ready / authority / bounded context**
+
+- Selected task/group: T-0002 / G-000; exact branch `docs/g000-baseline-readiness`. Before edits, `git status --short --branch`, `git branch --show-current`, `git log -2 --oneline`, `git diff --check`, `git diff --stat` and `git diff --cached` showed the exact branch, clean working tree and no staged changes. Verified predecessor `927db74e6766f9176b92f57d8930090842f4291d` has exact T-0001 subject, DONE evidence and seven checked subtasks; `git show --format=fuller --stat 927db74` proves the actual commit. `git merge-base main HEAD` is initialized baseline `ac8617aad8cb1d7ed4b658e63450426f452a7a54`. This continues the existing group; no preceding group merge or new branch is required.
+- Loaded root AGENTS; TASK §1–§9, §11–§12 G-000/T-0001/T-0002 entries, complete G-000 metadata/inventory, complete predecessor and selected task, T-0003 review boundary, §23–§28 and relevant §20–§22 rows. Reused unchanged source metadata/approval passages already verified for T-0001; expanded into PRD §14.1/§19 and ATT-006/007/010, DASH-004, DATA-006, AC-19/21/30/43; Architecture §15/§20/§24/§26; Schema §10.10–§10.11, §11.2–§11.8, §13.13, §14.2, §20/§23; Design System §2/§18/§26 VQA-12/§30. No .pen/backend implementation is required to perform this documentation analysis. `git ls-files` confirms no application, migrations, manifests, lockfiles or test runners to reuse.
+- Readiness fingerprints: AGENTS `011ee57d325cc5c43b39ca1deb5796c50183b88cb792f6167753a13f29a15ab2`; incoming TASK `3150b651916348e9bf013b555f0e9b00b001695cfe996241a17d0b8bf4d415bd`. `sha256sum docs/phase-1/*.md` reverified PRD `aad0e06d15a7c8b92629a2ed04e174bfaac2b5acbc7a4bcac3678a14d03dc494`, Architecture `77c424ff082417f574cce93f01725a5b522df0234b80ee4228e5e4f6937429b2`, Schema `cb413292ab799af4c96f0b532bc2fcd8e7a0f2bb88e48892b5559abc40ec8a4c`, Design System `f8e7b777d1646bf2588c43a7b067e01b6b329e3112aa00f74207737603519692`; all match TASK §2. Architecture owner acceptance is preserved in T-0001 and was not inferred anew. Read-only GitHub API recheck confirms main protected and merge-commit=true, squash=false, rebase=false, with unchanged main SHA. Definition of Ready passes for this analysis; attendance adjudication itself is the output, not an already-completed prerequisite.
+
+**Finding and version-bound projection proof — proposed handoff, not an approved schema amendment**
+
+Let `E` be one retained `attendance_evaluations.id`, not an unversioned current row. Its `attendance_record_id` identifies the original occurrence/period and protected `occurrence_version_id`; `E.policy_resolution_id` preserves the resolved grace. Its own `attendance_evaluation_segments.evaluation_id` fixes required/excused/established-work intervals and their source-work/source-leave IDs plus reviewed resolution basis. Use the exact segments for E, not today's leave status, location, template, policy or employment end. `E.source_fingerprint` and `E.calculation_version` identify the preserved interpretation. Corrections retain original/proposed JSON and link `expected_evaluation_id` to `applied_evaluation_id`; they never rewrite ordinary events/photos.
+
+Use integer half-microsecond ticks `2 × UTC_microseconds + half_us` for segment endpoints. For a nonempty, resolved, positive required-segment union, `S = min(required.starts)`, `F = max(required.ends)`. Scheduled breaks and approved excused segments have already been excluded; reviewed termination changes must have an explicit segment basis. No automatic cropping at termination is allowed.
+
+- Arrival: when a valid effective arrival I establishes presence on the remaining work, `late = I > S + late_grace_seconds × 2,000,000`. If late, duration is `I − S` (no grace subtraction); otherwise zero. Missing/unevaluable arrival yields NULL, not false. Existing `punctuality=on_time/late` is the **arrival** classification; it cannot be serialized as the complete punctuality outcome.
+- Departure: independently, when effective end O is factually known and valid for the same occurrence with `O > I`, `earlyDeparture = O < F`. Exact equality is not early. Unknown/untrusted end yields NULL; a missing out never implies early departure. Empty required work, unresolved expectation or evidence that cannot support a comparison yields NULL/N/A. Use retained reviewed effective bounds, not a raw end event as proof of worked excused segments.
+- These two functions have no mutual exclusion: changing O while retaining I/S cannot erase lateness. All inputs already have persisted version-bound fields. Therefore an extra early flag column is unnecessary for this proof; the missing piece is an explicit server projection description. The owner's acceptance of that description is still required by T-0003.
+- `ck_ae_04` can remain unchanged if the above arrival-only meaning is made explicit. A single display status that maps `on_time` to “no punctuality exception” fails the early-only case. Vue only renders the typed result; it does not calculate these flags, presence, segment subtraction or report metrics.
+
+**Concrete synthetic truth table**
+
+All times use Asia/Jakarta (+07:00). D=24 October 2026; D+1=25 October. Day work is [09:00,13:00) ∪ [14:00,18:00), W=8h; grace=300s. Overnight work is [D22:00,D+1 06:00). “Punctuality” below means the stored arrival scalar; L/E are independently projected nullable flags. “Eligible” means reconciled/evaluable at the chosen cutoff; a closed session alone does not assert reconciliation.
+
+| Case | Required segments / effective I,O | Stored arrival / projected L,E | Completeness / other persisted meaning | Report / evidence consequence |
+| --- | --- | --- | --- | --- |
+| On time | Day; D09:00,D18:00 | on_time / false,false | complete; required,present | Eligible r=1,P=1,Late=0. E retains both work segments. |
+| Late only | Day; D09:06,D18:00 | late / true,false; late duration 360s | complete; required,present | Eligible P=1,Late=1; duration starts at 09:00. |
+| Early only | Day; D09:00,D17:00 | on_time / false,true | complete; required,present | Eligible P=1,Late=0; early is an additional flag, not missing-out or absence. |
+| Late plus early | Day; D09:06,D17:00 | late / true,true | complete; required,present | Eligible P=1,Late=1; retain both punctuality outcomes. |
+| Missing in / final no-event absence | Day; NULL,NULL after due finalization | unknown / NULL,NULL | missing_in; required,absent,reconciled | Eligible r=1,P=0; excluded from present-only late denominator. Before due it is unknown/pending, never absent. Both absent bounds are retained as NULL. |
+| Present with missing out | Day; D09:06,NULL after due | late / true,NULL | missing_out; required,present,reconciled | Eligible P=1,Late=1, incomplete count +1. No synthetic end or early flag (AC-19). |
+| First-half approved leave | Required [14:00,18:00); D14:00,D18:00 | on_time / false,false | complete; present; excused [09:00,13:00) with source-leave link | Eligible r=0.5,P=1. Expected arrival is 14:00, not 09:00 (AC-21). |
+| Second-half approved leave | Required [09:00,13:00); D09:00,D14:00:01 | on_time / false,false | complete; present; excused [14:00,18:00) | Eligible r=0.5. End one second after second-half leave begins at 14:00 does not establish worked leave time; no established-work interval is inferred across leave/break (AC-21). |
+| Fully excused | Required empty; NULL,NULL | not_applicable / NULL,NULL | not_applicable; excused,unknown presence | r=0; attendance/late denominators exclude it. Never absent. |
+| Nonworking | No required work; NULL,NULL | not_applicable / NULL,NULL | not_applicable; nonworking,unknown presence | Excluded; source occurrence says nonworking, not guessed from weekday. |
+| Unassigned | No resolved work; NULL,NULL | unknown / NULL,NULL | unknown; unassigned,unknown presence | Excluded with unassigned coverage; no fabricated schedule/absence. |
+| Ongoing overnight | Night; D22:00,NULL before window closes | on_time / false,NULL | unknown while pending; present,provisional | Ongoing coverage, excluded until evaluable; start date D does not finalize it at midnight. |
+| Valid overnight | Night; D22:00,D+1 06:00 | on_time / false,false | complete; required,present | I=24 Oct 15:00Z; O=24 Oct 23:00Z. Same original occurrence, 8h interval, local start date D. |
+| Inconsistent overnight diagnosis | Contradictory candidate/evidence says I=D22:00,O=D06:00 (wrong date), or O=I | trusted arrival only / false,NULL if I independently valid; otherwise NULL,NULL | **Proposed** inconsistent; review_required/conflict; retain disputed candidate in restricted source/review context; effective O=NULL | Not an accepted ordinary clock/correction. `ck_ae_01` rejects the inverted/equal effective pair. Do not add a day, manufacture an event or overwrite original evidence; exclude unresolved conflict from metrics. Explicit classification requires proposed ck_ae_05 correction below. |
+| Reviewed unknown end at termination | Night; valid D22:00,NULL; original termination D+1 00:00 unchanged | on_time / false,NULL | missing_out + reviewed_unresolved; approved correction link and retained reason; expectation remains review_required until required-work basis is explicitly resolved | Ordinary access/out ends at 00:00, no extension/closure. Preserve presence and NULL end; review-required coverage excluded. A reviewed unknown end is not a complete session or automatically early (AC-43). |
+| Exact grace / +1 second | Day; I=09:05:00 / 09:05:01; O=18:00 | on_time / late; L=false / true,E=false | complete; late duration 0 / 301s | Exact seconds before formatting; no 1-second boundary loss. |
+| Exact half-microsecond end | Required [tick 0,tick 3); I=0,O=2 | on_time / false,true | complete; O>I; F=1µs+half_us=1 | O=1µs is half a microsecond early; flooring F would incorrectly remove it. Preserve bits (Schema §11.6). |
+
+The inconsistent row is a read-only negative/integrity-diagnosis fixture, not authorization for an import, an invalid clock event or application of an invalid correction. Existing Schema §11.4 guards reject bad ordinary out before commit; invalid correction values are not promoted to effective bounds. If contradictory retained evidence is discovered, retain its original reference/review context and explicitly diagnose it without weakening those guards. The table does not establish a new data ingestion path. Missing-in, inconsistent and reviewed-unknown are distinct outcomes; a rejected correction proposal alone does not change a valid attendance record to inconsistent.
+
+**Smallest proposed correction for owner review in T-0003**
+
+The current closed vocabulary `attendance_evaluations.completeness` and `ck_ae_05` cannot directly retain `inconsistent`. Neither `unknown` nor `missing_out` uniquely encodes known contradictory evidence; `ck_ae_01` intentionally prevents using an invalid effective pair as its substitute. A free-text `resolution_basis` or mutable current exception is not an established, version-bound typed completeness discriminator. Thus the combined contract is **not proven lossless as currently specified**, even though early departure is reproducible.
+
+1. Keep `completeness` as `VARCHAR(32) CHARACTER SET ascii COLLATE ascii_bin NOT NULL` with no default; retain all five existing values and add only `inconsistent`. Proposed exact `ck_ae_05`: `completeness IN ('complete','missing_in','missing_out','not_applicable','unknown','inconsistent')`. This is a proposed dictionary/CHECK amendment, not SQL executed here.
+2. Keep `ck_ae_01` **unchanged**: `effective_out_at IS NULL OR effective_in_at IS NULL OR effective_out_at > effective_in_at`. Contradictory/unestablished endpoints remain NULL in the effective projection; retained original/candidate evidence remains in its existing authorized source/review context. Do not relax temporal validation to persist a knowingly false worked interval. Keep `ck_ae_04` and all ordinary event/approval/overlap guards unchanged.
+3. Add the explicit arrival/early server projection and NULL semantics above to the directly affected Schema §11.5 guard/description; link §11.6 exact required segments and §20 INV-12. Independent reviewed resolution remains the existing workflow. No new flag column/table/index/relationship is needed; 90-table order and counts remain unchanged. No schema object is changed in T-0002.
+4. T-0003 must obtain the owner's concrete acceptance of **both** the no-extra-early-column proof/projection description and the one-value completeness correction before source edits. Refresh only directly affected invariant/trace/citation references and fingerprints under that task. Known Design System stale Schema citations (and old Architecture citations in downstream sources) remain explicit review items, not permission to edit approved documents here. If correction scope exceeds T-0003's allowed files, follow §26 rather than expanding it silently.
+5. **Decision status: PROPOSED / NOT ACCEPTED.** G-000's state-contract gate stays open until T-0003 records acceptance. T-0002's acceptance permits a precise proposed correction; completing this analysis does not assert owner acceptance or unblock migration/design implementation.
+
+**Typed DTO and historical/report reproduction**
+
+Proposed immutable server output carries `evaluationId, occurrenceVersionId, policyResolutionId, calculationVersion, sourceFingerprint`; separate typed expectation/presence/completeness/exception/reconciliation values; nullable `late: boolean | null`, `earlyDeparture: boolean | null`, and exact `lateDurationTicks: decimal-string | null`. Completeness retains existing states plus proposed `inconsistent`, pending acceptance. Restricted evidence/reasons, raw GPS and private file paths are not DTO inputs disclosed to unauthorized viewers. The server projects the permitted fields after current target/field authorization. “On time” must never hide earlyDeparture=true. Unknown end is shown explicitly with its approved resolution marker, not converted to zero or a false early flag.
+
+For **each truth-table row**, use the same chain: retained E bounds/dimensions → E's immutable required/excused segments and policy snapshot → the above typed flags → Analytics fact referring to that E and occurrence version. Facts preserve work/leave/required ticks, P/late flag and coverage; they do not store or reconstruct completeness/early from P alone. Detail/drill/CSV needing those dimensions joins the referenced E, never today's current evaluation. Source revision/fingerprint, metric version and report source manifest identify the same cohort/cutoff for all outputs; current authorization is still checked separately. Missing-out contributes presence without inventing worked duration; unresolved rows remain visibly excluded, not absent.
+
+An approved factual correction creates E2, retains E1/events/segments, links the correction to both versions, and changes source revision/dirty state in the committing workflow. A pinned historical report continues to use its E1/fact references; a current report must refresh/use E2 coherently or return stale. Retention must preserve referenced source versions, not rely on a mutable exception row. Schema §14.2 already supports `evaluation_id` and source fingerprint; no new Analytics metric or table is proposed. The PRD §19 fixture remains 60% attendance, 40% absence, 50% late, 7.5% leave utilization; making B missing-out changes incompleteness only (AC-30, DASH-004).
+
+**Read-only reproduction command executed successfully**
+
+This is the exact reasoning check run for the candidate projection and current/proposed CHECK value sets. It is not an application implementation, MySQL constraint execution, migration test, owner acceptance or proof that a runtime workflow exists.
+
+```sh
+python3 - <<'PY'
+from datetime import datetime, timezone
+from fractions import Fraction
+from pathlib import Path
+import re
+
+T = 2_000_000  # exact half-microsecond ticks per second
+epoch = datetime(1970, 1, 1, tzinfo=timezone.utc)
+def at(value):
+    d = datetime.fromisoformat(value) - epoch
+    return (d.days * 86400 + d.seconds) * T + d.microseconds * 2
+def local(clock, day="2026-10-24"):
+    return at(day + "T" + clock + "+07:00")
+def flags(required, arrival, departure, valid_arrival=True):
+    if not required:
+        return None, None, None
+    start, end = min(a for a, b in required), max(b for a, b in required)
+    late = None if arrival is None or not valid_arrival else arrival > start + 300 * T
+    early = None if departure is None or arrival is None or not valid_arrival or departure <= arrival else departure < end
+    duration = None if late is None else max(0, arrival - start) if late else 0
+    return late, early, duration
+def ck01(arrival, departure):
+    return departure is None or arrival is None or departure > arrival
+
+work = [(local("09:00:00"), local("13:00:00")), (local("14:00:00"), local("18:00:00"))]
+cases = [
+    ("on-time", work, local("09:00:00"), local("18:00:00"), (False, False, 0)),
+    ("late-only", work, local("09:06:00"), local("18:00:00"), (True, False, 360*T)),
+    ("early-only", work, local("09:00:00"), local("17:00:00"), (False, True, 0)),
+    ("late-and-early", work, local("09:06:00"), local("17:00:00"), (True, True, 360*T)),
+    ("missing-in", work, None, None, (None, None, None)),
+    ("present-missing-out", work, local("09:06:00"), None, (True, None, 360*T)),
+    ("first-half-leave", [work[1]], local("14:00:00"), local("18:00:00"), (False, False, 0)),
+    ("second-half-leave", [work[0]], local("09:00:00"), local("14:00:01"), (False, False, 0)),
+    ("full-leave", [], None, None, (None, None, None)),
+    ("grace-equal", work, local("09:05:00"), local("18:00:00"), (False, False, 0)),
+    ("grace-plus-one", work, local("09:05:01"), local("18:00:00"), (True, False, 301*T)),
+    ("half-us-boundary", [(0, 3)], 0, 2, (False, True, 0)),
+]
+night = [(local("22:00:00"), local("06:00:00", "2026-10-25"))]
+cases += [
+    ("valid-overnight", night, local("22:00:00"), local("06:00:00", "2026-10-25"), (False, False, 0)),
+    ("inconsistent-untrusted-out-omitted", night, local("22:00:00"), None, (False, None, 0)),
+    ("reviewed-unknown-end", night, local("22:00:00"), None, (False, None, 0)),
+]
+for name, required, arrival, departure, expected in cases:
+    assert flags(required, arrival, departure) == expected, name
+    assert ck01(arrival, departure), name
+assert not ck01(local("22:00:00"), local("06:00:00"))  # wrong local date: reject, never add a day
+assert not ck01(local("22:00:00"), local("22:00:00"))
+assert night[0][1] - night[0][0] == 8 * 3600 * T
+assert local("22:00:00") == at("2026-10-24T15:00:00+00:00")
+schema = Path("docs/phase-1/DATABASE-SCHEMA.md").read_text()
+row = next(x for x in schema.splitlines() if x.startswith("| ck_ae_05 |"))
+current = set(re.findall(r"'([^']+)'", row))
+assert current == {"complete", "missing_in", "missing_out", "not_applicable", "unknown"}
+assert "inconsistent" not in current
+proposed = current | {"inconsistent"}
+assert all(x in proposed for x in current) and "inconsistent" in proposed
+weights, presence = [Fraction(1), Fraction(1,2), Fraction(1)], [1,1,0]
+assert 100 * sum(w*p for w,p in zip(weights,presence)) / sum(weights) == 60
+assert 100 * sum(w*(1-p) for w,p in zip(weights,presence)) / sum(weights) == 40
+assert Fraction(100,2) == 50
+assert 100 * Fraction(3,2) / 20 == Fraction(15,2)
+print("PASS: 15 projection cases; strict grace/overnight/half-us boundaries; ck_ae_01 comparison; current completeness gap; proposed value set; exact 60/40/50/7.5 fixture. Read-only reasoning check, not MySQL/runtime evidence.")
+PY
+```
+
+Observed: `PASS: 15 projection cases; strict grace/overnight/half-us boundaries; ck_ae_01 comparison; current completeness gap; proposed value set; exact 60/40/50/7.5 fixture. Read-only reasoning check, not MySQL/runtime evidence.`
+
+**Verification / acceptance / completion**
+
+- Truth-table review compares PRD §14.1/§19, Schema `ck_ae_01/04/05`, source/evaluation/policy/segment references, Design System §18/§30/VQA-12 and relevant §20–§22 coverage. Each requested classification has an explicit preserved-input projection or the precise proposed completeness correction; no known state is silently mapped to “complete/on time/absent”. Exact owner decision for T-0003 is identified above.
+- DOC commands: `git diff --check`; `sha256sum`; read-only Python assertions for 280 ordered task IDs, 33 groups, 2,383 subtasks, anchors/links, earlier-only mandatory dependencies, PRD requirement coverage, unchanged canonical source bytes/fingerprints, preserved T-0001 block and unchanged T-0003/later task definitions. Bounded diff/staging and added text reviewed for secrets/private data. Results are recorded in the execution response; no waived failure.
+- Only DOC is active. No installed application/test harness or database target exists. PHP/JS dependencies and build/static/unit/architecture/browser/Compose/MySQL/race/device/reporting checks are NOT_YET_APPLICABLE at this documentation stage, with exact activation/follow-up packs in §23 and the verified T-0001 evidence. In particular migration/DB checks start T-0073 (follow-up T-0098/T-0265); the affected evaluation persistence is T-0095; evaluator golden cases T-0138; correction/reconciliation T-0145/T-0146; report parity T-0168/T-0169/T-0177 and T-0267. These future tests must verify the accepted contract on real tooling; the script does not replace them.
+- Future acceptance cases: all rows above in EvaluationDimensionsTest; MySQL accept proposed `inconsistent`/reject misspelled states and inverted/equal non-NULL bounds with unchanged `ck_ae_01`; independent correction retains E1/raw evidence and produces linked E2 or explicit unknown end; protected leave/break/termination segments and half-us endpoints; missing-out preserves P; report/drill/CSV version parity and current field authorization. No assertion from these unrun tests is credited now.
+- Scope is TASK.md readiness finding/truth table and T-0002 status/evidence, plus corresponding execution-status counters under §27. PRD, Architecture, Schema, Design System, AGENTS and T-0001's accepted evidence are unchanged; no application/migration/design/approval is fabricated. T-0002 DONE intent belongs to exactly one commit `docs(schema): verify lossless attendance state projection (T-0002)`; actual SHA is reported after commit, not embedded into itself. No push/PR/merge is performed. G-000 remains ACTIVE. Next task is T-0003, whose source-edit/acceptance gate remains pending; it is not started.
+
 
 <a id="t-0003"></a>
 
@@ -14753,19 +14898,19 @@ If real defects require new work beyond the current atomic task, amend TASK.md t
 
 | Phase | Groups | Total tasks | Completed | Status |
 | --- | --- | --- | --- | --- |
-| Phase 0 | G-000–G-000 | 4 | 1 | ACTIVE |
+| Phase 0 | G-000–G-000 | 4 | 2 | ACTIVE |
 | Phase 1 | G-001–G-006 | 60 | 0 | NOT_STARTED |
 | Phase 2 | G-007–G-011 | 38 | 0 | NOT_STARTED |
 | Phase 3 | G-012–G-022 | 85 | 0 | NOT_STARTED |
 | Phase 4 | G-023–G-028 | 62 | 0 | NOT_STARTED |
 | Phase 5 | G-029–G-030 | 15 | 0 | NOT_STARTED |
 | Phase 6 | G-031–G-032 | 16 | 0 | NOT_STARTED |
-| Total | 33 | 280 | 1 | CONTROLLED EXECUTION |
+| Total | 33 | 280 | 2 | CONTROLLED EXECUTION |
 
 | Tracking field | Initial value / update rule |
 | --- | --- |
-| Active group/task | G-000 / None; T-0001 complete, T-0002 not started |
-| Completed task commits | 1 on creation of this atomic T-0001 commit; actual SHA in execution response |
+| Active group/task | G-000 / None; T-0002 analysis complete, T-0003 not started; state-contract owner review remains open |
+| Completed task commits | 2 on creation of this atomic T-0002 commit; predecessor T-0001 SHA in T-0002 evidence, current SHA in execution response |
 | Merged group PRs | 0 |
 | Approved .pen major views | 0/44; source Design System approval remains separately valid |
 | Runtime tests/benchmark/release | Not executed; not achieved by this plan |
