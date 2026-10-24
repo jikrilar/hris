@@ -46,12 +46,12 @@
 | Date | 23 October 2026 (Asia/Jakarta) |
 | Approval | Approved by the project owner on 23 October 2026. Approval covers the execution plan and its structure; mandatory readiness and task/group acceptance gates remain applicable. |
 | Planning inventory | 7 phases; 33 task groups/planned branches; 280 tasks/planned task commits; 2383 explicit subtasks. |
-| Execution state | All tasks TODO; all groups NOT_STARTED; completed tasks 0. No application or .pen implementation is asserted. |
+| Execution state | T-0001 DONE intent in its atomic task commit; G-000 ACTIVE; completed tasks 1. All other tasks TODO and other groups NOT_STARTED. No application or .pen implementation is asserted. |
 | Scope of this assignment | Finalize this TASK.md only. No branches, commits, PRs, designs, migrations, models, application changes, SIT.md or UAT.md are created now. |
 | Execution authority | The approved plan governs controlled sequential execution. Begin only the explicitly selected task/group after its Definition of Ready is verified, starting with mandatory G-000. |
 | Developer model | One developer using Codex CLI, one active group and one active task. |
 | Integration branch | Protected main; one group branch and one PR; individual task commits preserved. |
-| Repository observation | The supplied workspace contains the canonical documents and no identified Git checkout/remote. An owner-selected initialized main is required before execution; this deliverable is the Markdown plan. |
+| Repository observation | Execution entry verified by T-0001: owner-selected repository `jikrilar/hris`, initialized protected main at `ac8617aad8cb1d7ed4b658e63450426f452a7a54`; source/plan baseline and group branch verified. |
 
 The backlog is the execution contract. Counts below describe planned coverage, not passing software, accepted screens, benchmark achievement or release approval. Revalidate sources at execution; accepted source corrections update the affected tasks before migration or design proceeds.
 
@@ -59,14 +59,14 @@ The backlog is the execution contract. Counts below describe planned coverage, n
 
 ## 2. Source Baselines and Authority
 
-| Source | Verified version | Actual status and approval evidence | SHA-256 of reviewed canonical bytes |
-| --- | --- | --- | --- |
-| [PRD.md](PRD.md) | 1.0 — Approved Requirements Baseline | Approved Requirements Baseline; all 21 ODs explicitly APPROVED; final owner decision on 22 October 2026. | `aad0e06d15a7c8b92629a2ed04e174bfaac2b5acbc7a4bcac3678a14d03dc494` |
-| [ARCHITECTURE.md](ARCHITECTURE.md) | 1.0 — Technical Architecture Baseline | Architecture decisions established for schema design and implementation; implementation/release validation outstanding. No explicit owner-approval statement is present in the document. | `ba68da4e18de4e18e88eabe253596098c6a9558c8ef822ff40b3fda9c11c2b07` |
-| [DATABASE-SCHEMA.md](DATABASE-SCHEMA.md) | 1.0 — Approved Database Schema Baseline | Approved by project owner on 23 October 2026; implementation checks remain required. | `cb413292ab799af4c96f0b532bc2fcd8e7a0f2bb88e48892b5559abc40ec8a4c` |
-| [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md) | 1.0 — Approved Design System Baseline | Approved by project owner on 23 October 2026; individual .pen frames are not yet authored/approved. | `f8e7b777d1646bf2588c43a7b067e01b6b329e3112aa00f74207737603519692` |
+| Source                                   | Verified version                        | Actual status and approval evidence                                                                                                                                                      | SHA-256 of reviewed canonical bytes                                |
+| ---------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| [PRD.md](PRD.md)                         | 1.0 — Approved Requirements Baseline    | Approved Requirements Baseline; all 21 ODs explicitly APPROVED; final owner decision on 22 October 2026.                                                                                 | `aad0e06d15a7c8b92629a2ed04e174bfaac2b5acbc7a4bcac3678a14d03dc494` |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | 1.0 — Technical Architecture Baseline | Explicitly approved by the project owner in this execution conversation on 24 October 2026 (Asia/Jakarta), for the actual verified file including ADR-001–ADR-015; official authority for database, UI and implementation. See G-000/T-0001 approval evidence. Implementation/release validation remains outstanding. | `77c424ff082417f574cce93f01725a5b522df0234b80ee4228e5e4f6937429b2` |
+| [DATABASE-SCHEMA.md](DATABASE-SCHEMA.md) | 1.0 — Approved Database Schema Baseline | Approved by project owner on 23 October 2026; implementation checks remain required.                                                                                                     | `cb413292ab799af4c96f0b532bc2fcd8e7a0f2bb88e48892b5559abc40ec8a4c` |
+| [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md)     | 1.0 — Approved Design System Baseline   | Approved by project owner on 23 October 2026; individual .pen frames are not yet authored/approved.                                                                                      | `f8e7b777d1646bf2588c43a7b067e01b6b329e3112aa00f74207737603519692` |
 
-Authority: approved PRD → established architecture once its required owner acceptance is evidenced → approved database schema → approved design system → explicit owner-approved .pen frame/revision → TASK.md → implementation. A lower source cannot change product behavior. The attached task brief was also reviewed in full.
+Authority: approved PRD → owner-accepted architecture (see G-000/T-0001 evidence) → approved database schema → approved design system → explicit owner-approved .pen frame/revision → TASK.md → implementation. A lower source cannot change product behavior. The attached task brief was also reviewed in full.
 
 | Verified source inventory | Count |
 | --- | --- |
@@ -82,7 +82,7 @@ Authority: approved PRD → established architecture once its required owner acc
 | Major-view IDs / foundations / application patterns | 44 / 26 / 30 |
 | Visual QA references / design decisions | 20 VQA / 14 DSD |
 
-**Current readiness findings.** PRD, Schema and Design System have actual owner approval. Architecture is an established v1.0 technical baseline; no explicit owner-acceptance record was supplied, so [T-0001](#t-0001) must locate one or obtain the owner’s concrete acceptance before the documentation milestone closes. This does not reopen already-approved ODs or repeat schema/design approval.
+**Current readiness findings.** PRD, Schema and Design System retain their existing owner approvals. On 24 October 2026 the project owner explicitly accepted the actual Architecture v1.0 file, including ADR-001–ADR-015, as the official baseline for database, UI and implementation. Its verified canonical hash is reconciled above; the historical mismatch and approval record are preserved in [T-0001](#t-0001). This resolves the missing Architecture acceptance and fingerprint gate, without completing G-000, approving a screen or validating implementation/release. Repository merge-policy readiness now passes as recorded in T-0001.
 
 The approved Design System still embeds a pre-approval schema v0.1 status/hash in §2/§29/§30. Use the current schema metadata/hash above; [T-0003](#t-0003) schedules only the necessary citation/status refresh during future execution. The sources are **not modified by this planning assignment**.
 
@@ -591,7 +591,7 @@ This phase contains [G-000](#g-000). All groups start NOT_STARTED and all tasks 
 | Group verification | DOC plus all activated §23 task/group packs and exact targeted checks specified in each task; on main use Architecture§24.3 integrated suite. |
 | Pull Request title | docs(g-000): Documentation Baseline Readiness |
 | Merge prerequisites | Every task DONE/committed; group acceptance and required CI passed; actual required owner review; no blocker; reviewed diff; merge preserves individual task commits; verify integrated main before next group. |
-| Group status | NOT_STARTED |
+| Group status | ACTIVE |
 
 **Group acceptance criteria**
 
@@ -604,7 +604,7 @@ This phase contains [G-000](#g-000). All groups start NOT_STARTED and all tasks 
 
 | Order | Task ID | Task title | Planned commit | Dependency | Status |
 | --- | --- | --- | --- | --- | --- |
-| 1 | [T-0001](#t-0001) | Verify repository entry and authoritative source approvals | `docs(readiness): record source authority and execution entry (T-0001)` | Execution entry; §8 | TODO |
+| 1 | [T-0001](#t-0001) | Verify repository entry and authoritative source approvals | `docs(readiness): record source authority and execution entry (T-0001)` | Execution entry; §8 | DONE |
 | 2 | [T-0002](#t-0002) | Adjudicate attendance punctuality and completeness projection | `docs(schema): verify lossless attendance state projection (T-0002)` | T-0001 | TODO |
 | 3 | [T-0003](#t-0003) | Record the approved minimal source correction and refresh stale citations | `docs(schema): reconcile approved source references (T-0003)` | T-0002 | TODO |
 | 4 | [T-0004](#t-0004) | Freeze documentation and planning execution references | `docs(plan): freeze sequential execution baseline (T-0004)` | T-0003 | TODO |
@@ -627,17 +627,17 @@ This phase contains [G-000](#g-000). All groups start NOT_STARTED and all tasks 
 | Git Commit | `docs(readiness): record source authority and execution entry (T-0001)` |
 | Definition of Done | The repository/base identity and source authorities are unambiguous. All listed subtasks and applicable task checks pass; reviewed bounded diff, one exact task commit and status/evidence recorded as §9 requires. |
 | Risk / Notes | No repository is attached to this planning workspace. An initialized owner-selected main is an execution-entry prerequisite, not an unplanned genesis commit hidden inside a task. |
-| Status | TODO |
+| Status | DONE |
 
 **Ordered subtasks — all belong to this task’s single commit**
 
-- [ ] Identify the owner-selected repository/remote and main branch containing all four canonical source files and this plan; if no initialized main exists, record the repository prerequisite and stop execution before branching.
-- [ ] Verify protected-main policy, merge-commit availability and a clean checkout; create this group branch as the authorized group-entry operation only when the instruction covers this task or G-000 and an initialized verified main exists.
-- [ ] Read current source metadata/content and calculate SHA-256; compare approved PRD, schema and design records with the source register in §2.
-- [ ] Locate an explicit architecture owner-acceptance record; record its evidence or mark the documentation gate pending without relabeling the architecture as approved.
-- [ ] Record that no .pen frame, application implementation, runtime test or benchmark completion has been verified.
-- [ ] Run the task-specific verification listed below and every already-applicable shared gate; record exact commands/results and any not-yet-applicable check with its activating task in §23. Never mark an unexecuted or failed check passed.
-- [ ] Review the bounded diff and acceptance evidence, update only this task’s status/evidence row in TASK.md, and create exactly one commit with subject "docs(readiness): record source authority and execution entry (T-0001)". Record its resulting SHA in the PR/execution log rather than amending this commit to contain its own SHA.
+- [x] Identify the owner-selected repository/remote and main branch containing all four canonical source files and this plan; if no initialized main exists, record the repository prerequisite and stop execution before branching.
+- [x] Verify protected-main policy, merge-commit availability and a clean checkout; create this group branch as the authorized group-entry operation only when the instruction covers this task or G-000 and an initialized verified main exists.
+- [x] Read current source metadata/content and calculate SHA-256; compare approved PRD, schema and design records with the source register in §2.
+- [x] Locate an explicit architecture owner-acceptance record; record its evidence or mark the documentation gate pending without relabeling the architecture as approved.
+- [x] Record that no .pen frame, application implementation, runtime test or benchmark completion has been verified.
+- [x] Run the task-specific verification listed below and every already-applicable shared gate; record exact commands/results and any not-yet-applicable check with its activating task in §23. Never mark an unexecuted or failed check passed.
+- [x] Review the bounded diff and acceptance evidence, update only this task’s status/evidence row in TASK.md, and create exactly one commit with subject "docs(readiness): record source authority and execution entry (T-0001)". Record its resulting SHA in the PR/execution log rather than amending this commit to contain its own SHA.
 
 **Acceptance criteria**
 
@@ -648,7 +648,35 @@ This phase contains [G-000](#g-000). All groups start NOT_STARTED and all tasks 
 
 - DOC; git status --short; git remote -v; git branch --show-current; git log -1 --oneline; sha256sum docs/phase-1/{PRD,ARCHITECTURE,DATABASE-SCHEMA,DESIGN-SYSTEM}.md.
 
-**Execution evidence to fill only after execution:** result/status; actual commands and outcomes; source/design/runtime references; task commit in PR log; blocker or limitation. No passing result is prefilled.
+**Initial execution evidence — 24 October 2026 (Asia/Jakarta): BLOCKED at readiness; no task commit created at that point.** Initial observations below are retained as history; the subsequent owner-approval/reverification entry supersedes their resolved blockers.
+
+- Authorized scope: owner selected T-0001 only. Repository `/home/jikrilar/Projects/hris`, verified origin `https://github.com/jikrilar/hris.git`; default branch `main`. Local `main`, `origin/main`, remote `refs/heads/main` and the existing exact group branch `docs/g000-baseline-readiness` all resolve to baseline `ac8617aad8cb1d7ed4b658e63450426f452a7a54`. `git ls-files`, `git branch -avv`, `git log --all --oneline --decorate`, `git reflog show docs/g000-baseline-readiness` and `git ls-remote origin refs/heads/main` verify the initialized source/plan baseline and existing branch. No predecessor task/group applies. No branch/base changes were made.
+- Before edits, `git status --short --branch`, `git branch --show-current`, `git log -1 --oneline`, `git diff --check`, `git diff --stat` and `git diff --cached` confirmed the exact branch and a clean checkout. `git remote -v` and local configuration confirmed origin/main tracking. Only this task's status/evidence is changed; ordered implementation subtasks remain unchecked because readiness failed.
+- **Repository-policy blocker — §4, §8 and T-0001 subtask 2:** `gh api repos/jikrilar/hris` reports `default_branch=main`, `allow_merge_commit=true`; `gh api repos/jikrilar/hris/branches/main` reports `protected=false`, `protection.enabled=false`. `gh api repos/jikrilar/hris/branches/main/protection` returns HTTP 404, `Branch not protected`; both `gh api repos/jikrilar/hris/rulesets` and `gh api repos/jikrilar/hris/rules/branches/main` return empty arrays. Protected-main readiness is unmet. Smallest resolution: repository administrator enables the required main protection/review and merge-preserving policy, then recheck actual settings. No remote policy was changed by this task.
+- **Source-authority blocker — §2, §8 and §26:** `sha256sum docs/phase-1/{PRD,ARCHITECTURE,DATABASE-SCHEMA,DESIGN-SYSTEM}.md` confirms PRD `aad0e06d15a7c8b92629a2ed04e174bfaac2b5acbc7a4bcac3678a14d03dc494`, Schema `cb413292ab799af4c96f0b532bc2fcd8e7a0f2bb88e48892b5559abc40ec8a4c` and Design System `f8e7b777d1646bf2588c43a7b067e01b6b329e3112aa00f74207737603519692`, matching §2. Their existing owner approvals remain valid as recorded in each document §1. Current Architecture v1.0 bytes hash to `77c424ff082417f574cce93f01725a5b522df0234b80ee4228e5e4f6937429b2`, whereas §2 records `ba68da4e18de4e18e88eabe253596098c6a9558c8ef822ff40b3fda9c11c2b07`. LF normalization does not resolve the mismatch; the only repository commit contains the current bytes, so prior reviewed bytes/change provenance cannot be established from Git. Smallest resolution: provide the reviewed Architecture bytes or authoritative revision/provenance and an owner decision bound to the intended hash before reconciling the source register. No source hash was silently replaced.
+- Architecture §1 still states an established technical baseline without explicit owner acceptance. Tracked-file inventory and Architecture approval/acceptance searches locate no separate authoritative owner-acceptance record. Owner acceptance of the identified Architecture revision remains **pending for the documentation milestone**; TASK approval and task execution authorization do not supply it. This pending milestone gate is distinct from the failed repository-policy/source-fingerprint readiness above.
+- Verification: read-only Python assertions passed for all 280 sequential task IDs, 33 sequential group IDs, 2,383 ordered subtasks, unique anchors, existing internal anchor targets and earlier-only task dependencies. DOC fingerprint comparison found the Architecture mismatch above; DOC is not fully passing. Full source/coverage freeze remains T-0004. Final bounded diff/whitespace review is recorded in the execution response; no failed gate is waived.
+- `git ls-files` contains only `.gitignore`, root `AGENTS.md` and the five canonical Markdown documents. No `.pen` frame/revision, application implementation, runtime test or benchmark completion is verified. Runtime/tooling packs are NOT_YET_APPLICABLE: DEPS-PHP T-0065 → T-0070; DEPS-JS/TS/FE/BUILD T-0066 → T-0070; DOCKER T-0067 → T-0258; ARCH T-0068 → T-0265; UNIT/E2E T-0069 → T-0265/T-0267; PHP T-0070 → T-0072; MIG/DB T-0073 → T-0098/T-0265; RACE T-0080 → T-0265; OUTBOX T-0102 → T-0251; PRIVATE-FILES T-0136 → T-0266; RETENTION/RESET T-0182 → T-0257; RESTORE T-0185 → T-0255; VIS T-0188 → T-0267; BENCH T-0269 → T-0270; SIT T-0274 → T-0275; UAT T-0276 → T-0277, per §23. No absent runner was reported as passing.
+- Git: planned subject remains `docs(readiness): record source authority and execution entry (T-0001)`; no task SHA/PR/merge exists. Preserve this uncommitted blocker record under §26; resume T-0001 after readiness resolution. T-0002 is the next planned task and is not dependency-eligible until T-0001 is DONE with its exact commit. No later task was started.
+
+
+**Owner approval and readiness reverification — 24 October 2026 (Asia/Jakarta)**
+
+- Decision source: the project owner's explicit message in this execution conversation: “Saya sebagai project owner menyetujui `docs/phase-1/ARCHITECTURE.md` versi 1.0 sebagai Technical Architecture Baseline untuk Professional HRIS Phase 1.” The owner expressly binds acceptance to the actual verified file, including all ADR-001–ADR-015, and makes it the official reference for database, UI and implementation. This is Architecture acceptance evidence for G-000, not inferred from TASK approval.
+- `sha256sum docs/phase-1/ARCHITECTURE.md` reverified `77c424ff082417f574cce93f01725a5b522df0234b80ee4228e5e4f6937429b2`. Read-only Python SHA-256 and ADR-register assertions independently verified the same bytes and exactly ADR-001–ADR-015 in Architecture §28. The file is unchanged from baseline `ac8617aad8cb1d7ed4b658e63450426f452a7a54`. §2 now records this owner-accepted hash. Historical §2 hash `ba68da4e18de4e18e88eabe253596098c6a9558c8ef822ff40b3fda9c11c2b07` is retained here as the superseded reference; the intervening working-copy Architecture register cell contained the PRD hash `aad0e06d15a7c8b92629a2ed04e174bfaac2b5acbc7a4bcac3678a14d03dc494`, which is not the Architecture file hash. The owner's current decision resolves acceptance of the actual bytes without asserting that prior byte history was recovered. Architecture source content was not edited.
+- All four canonical source hashes were recalculated; PRD, Schema and Design System still match §2. Architecture acceptance/fingerprint blockers above are **RESOLVED**. Existing source approvals and the separately required T-0002/T-0003 attendance review/citation work remain intact.
+- Remote recheck: `gh api repos/jikrilar/hris/branches/main` now reports `protected=true` at unchanged baseline SHA. `gh api repos/jikrilar/hris/rules/branches/main` and `gh api repos/jikrilar/hris/rulesets/25769344` show active `Protect main` rules requiring a pull request and preventing deletion/non-fast-forward updates. The earlier absence of main protection is **RESOLVED**. No remote setting was changed by this execution.
+- Remaining **BLOCKED** merge-policy verification under TASK §4: `gh api repos/jikrilar/hris` still reports `allow_merge_commit=true`, `allow_squash_merge=true`, `allow_rebase_merge=true`; the active pull-request rule allows merge/squash/rebase and requires zero approving reviews. TASK §4 explicitly requires squash disabled for these PRs and owner review before integration. Smallest resolution: administrator disables squash for group PRs (or supplies the reviewed policy exception under §26); preserve actual owner review before integration. Approval of Architecture supplies no group-merge authorization. No task completion, task commit, PR or merge is claimed; T-0002 remains ineligible.
+- Scope/verification: preserve existing working-copy formatting and earlier evidence; edit only TASK source-authority/readiness records and this task's evidence. `git diff --check` and bounded-diff review apply; runtime packs remain NOT_YET_APPLICABLE as recorded above. No status-only commit is created while required task readiness remains incomplete.
+
+**Final T-0001 verification — 24 October 2026 (Asia/Jakarta): DONE intent for the exact atomic task commit**
+
+- Owner selected reverification and completion of T-0001 only. `git fetch origin`, `git ls-remote origin refs/heads/main`, `git branch -avv`, `git rev-parse main origin/main HEAD` and `git log --all --format='%H %s'` confirm the existing exact branch `docs/g000-baseline-readiness` is based on current initialized main `ac8617aad8cb1d7ed4b658e63450426f452a7a54`; there is no predecessor task/group or existing T-0001 commit. The original clean-checkout evidence remains above. Current changes are the preserved authorized TASK source/evidence work, including the existing source-register formatting; no unrelated file is modified. No branch recreation or main mutation was needed.
+- **Merge policy PASS / previous blocker RESOLVED:** `gh api repos/jikrilar/hris --jq '{full_name,default_branch,allow_merge_commit,allow_squash_merge,allow_rebase_merge}'` returns `jikrilar/hris`, `main`, `true`, `false`, `false` respectively. `gh api repos/jikrilar/hris/branches/main --jq '{sha:.commit.sha,protected}'` returns the verified base and `protected=true`. `gh api repos/jikrilar/hris/rules/branches/main` still requires PR integration and prevents deletion/non-fast-forward updates. Its allowed-method list still names all three methods, but repository-level squash/rebase are disabled: only merge commits are enabled, as TASK §4 requires. The rule requires zero approving reviews; actual owner review and all applicable checks remain explicit group integration gates under §4/§25, not evidence of review or merge already performed. No GitHub configuration was changed by this task.
+- **Source authority PASS:** all four `sha256sum` values match the reconciled §2 register. Read-only Python independently checked each canonical hash and byte equality with the initialized baseline. The explicit owner acceptance above covers the actual Architecture hash and all 15 ADRs; PRD, Schema and Design System retain their original approvals. Both T-0001 acceptance criteria are satisfied: repository/base identity and source authorities are unambiguous, and the formerly missing Architecture acceptance has genuine recorded resolution. Historical blocker observations are retained rather than overwritten.
+- **DOC PASS:** read-only Python assertions verified 280 ordered task IDs, 33 ordered group IDs, 2,383 subtasks, unique anchors and valid internal targets, earlier-only task dependencies including every mandatory immediate predecessor, all 136 PRD requirement IDs matching §20.1 coverage, ADR-001–ADR-015, the exact branch and matching main/origin/main/base. `git diff --check` passed; the bounded diff and intended staging were reviewed for scope and secrets/private data. Full cross-document/state-contract freeze remains T-0004; no T-0002 projection proof is claimed here.
+- **Progressive gates:** only DOC is activated for this documentation task. No application manifests, lockfiles, runner, CI or .pen asset exists in the tracked inventory; other packs remain NOT_YET_APPLICABLE with activation/follow-up tasks recorded above. No runtime, benchmark, implementation or screen approval is claimed.
+- **Completion/Git:** all seven ordered subtasks and task acceptance are verified. Status is recorded as DONE intent in this same atomic task commit under §6/§9; planned subject is exactly `docs(readiness): record source authority and execution entry (T-0001)`. The actual resulting SHA is reported in the execution response after commit, not inserted into its own commit. No PR, push, merge, deployment or release is performed. G-000 remains ACTIVE with T-0002–T-0004 incomplete; no T-0001 blocker remains. Next dependency-eligible task after this commit is T-0002, which is not started.
 
 <a id="t-0002"></a>
 
@@ -14725,19 +14753,19 @@ If real defects require new work beyond the current atomic task, amend TASK.md t
 
 | Phase | Groups | Total tasks | Completed | Status |
 | --- | --- | --- | --- | --- |
-| Phase 0 | G-000–G-000 | 4 | 0 | NOT_STARTED |
+| Phase 0 | G-000–G-000 | 4 | 1 | ACTIVE |
 | Phase 1 | G-001–G-006 | 60 | 0 | NOT_STARTED |
 | Phase 2 | G-007–G-011 | 38 | 0 | NOT_STARTED |
 | Phase 3 | G-012–G-022 | 85 | 0 | NOT_STARTED |
 | Phase 4 | G-023–G-028 | 62 | 0 | NOT_STARTED |
 | Phase 5 | G-029–G-030 | 15 | 0 | NOT_STARTED |
 | Phase 6 | G-031–G-032 | 16 | 0 | NOT_STARTED |
-| Total | 33 | 280 | 0 | PLANNING ONLY |
+| Total | 33 | 280 | 1 | CONTROLLED EXECUTION |
 
 | Tracking field | Initial value / update rule |
 | --- | --- |
-| Active group/task | None / None |
-| Completed task commits | 0 |
+| Active group/task | G-000 / None; T-0001 complete, T-0002 not started |
+| Completed task commits | 1 on creation of this atomic T-0001 commit; actual SHA in execution response |
 | Merged group PRs | 0 |
 | Approved .pen major views | 0/44; source Design System approval remains separately valid |
 | Runtime tests/benchmark/release | Not executed; not achieved by this plan |
