@@ -23,7 +23,7 @@ Both canonical source files were read completely before design. Authority order 
 | Source | Verified baseline | Integrity fingerprint (SHA-256) |
 | --- | --- | --- |
 | [PRD.md](PRD.md) | v1.0 — Approved Requirements Baseline; BR-01–BR-28 retained; all OD-01–OD-21 APPROVED, including revised OD-03/08/12/14/16/20 | `aad0e06d15a7c8b92629a2ed04e174bfaac2b5acbc7a4bcac3678a14d03dc494` |
-| [ARCHITECTURE.md](ARCHITECTURE.md) | v1.0 — Technical Architecture Baseline; ADR-001–ADR-015; six modules | `ba68da4e18de4e18e88eabe253596098c6a9558c8ef822ff40b3fda9c11c2b07` |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | v1.0 — Technical Architecture Baseline; ADR-001–ADR-015; six modules | `77c424ff082417f574cce93f01725a5b522df0234b80ee4228e5e4f6937429b2` |
 
 Actual PRD identifiers total **136 requirements**, **18 workflows** (WF-01–WF-18) and **48 acceptance criteria** (AC-01–AC-48). Requirement groups: AUTH8, EMP8, ORG4, SHIFT9, ATT13, LEAVE15, DASH9, RULE10, DATA10, NTF6, SEC12, NFR16, QA8 and REL8. No source contradiction requiring a changed product decision was identified. Neither baseline is edited by this deliverable.
 
@@ -2036,7 +2036,7 @@ Reconcilers run at15-minute intervals after latest permitted out+15m and a night
 
 **Retention:** Structured-HR candidate: five years after employment end where applicable, subject to exact category approval and closure of every FK/hold/economic/evidence dependency. Catalog identities are retired; no automatic deletion.
 
-**Trace:** ATT-007–ATT-010; DASH-004–DASH-006; OD-03, OD-10, OD-17; ADR-011.
+**Trace:** ATT-006–ATT-010; DASH-004–DASH-006; OD-03, OD-10, OD-17; ADR-011.
 
 | Column | Exact MySQL type | NULL | DB default | Contract |
 | --- | --- | --- | --- | --- |
@@ -2048,8 +2048,8 @@ Reconcilers run at15-minute intervals after latest permitted out+15m and a night
 | `policy_resolution_id` | `BIGINT UNSIGNED` | NO | — | Parent identity; ownership/context checked in the command. |
 | `expectation` | `VARCHAR(32) CHARACTER SET ascii COLLATE ascii_bin` | NO | — | Allowed: required, excused, nonworking, unassigned, review_required |
 | `presence` | `VARCHAR(32) CHARACTER SET ascii COLLATE ascii_bin` | NO | — | Allowed: present, absent, unknown |
-| `punctuality` | `VARCHAR(32) CHARACTER SET ascii COLLATE ascii_bin` | NO | — | Allowed: on_time, late, not_applicable, unknown |
-| `completeness` | `VARCHAR(32) CHARACTER SET ascii COLLATE ascii_bin` | NO | — | Allowed: complete, missing_in, missing_out, not_applicable, unknown |
+| `punctuality` | `VARCHAR(32) CHARACTER SET ascii COLLATE ascii_bin` | NO | — | Arrival classification only: on_time, late, not_applicable, unknown; independent early-departure projection below. |
+| `completeness` | `VARCHAR(32) CHARACTER SET ascii COLLATE ascii_bin` | NO | — | Allowed: complete, missing_in, missing_out, not_applicable, unknown, inconsistent |
 | `exception_state` | `VARCHAR(32) CHARACTER SET ascii COLLATE ascii_bin` | NO | — | Allowed: none, conflict, termination_review, reviewed_unresolved |
 | `reconciliation_state` | `VARCHAR(32) CHARACTER SET ascii COLLATE ascii_bin` | NO | — | Allowed: provisional, reconciled, pending_reconciliation |
 | `effective_in_at` | `DATETIME(6)` | YES | `NULL` | UTC instant. |
@@ -2082,13 +2082,23 @@ Reconcilers run at15-minute intervals after latest permitted out+15m and a night
 | ck_ae_02 | `expectation IN ('required','excused','nonworking','unassigned','review_required')` |
 | ck_ae_03 | `presence IN ('present','absent','unknown')` |
 | ck_ae_04 | `punctuality IN ('on_time','late','not_applicable','unknown')` |
-| ck_ae_05 | `completeness IN ('complete','missing_in','missing_out','not_applicable','unknown')` |
+| ck_ae_05 | `completeness IN ('complete','missing_in','missing_out','not_applicable','unknown','inconsistent')` |
 | ck_ae_06 | `exception_state IN ('none','conflict','termination_review','reviewed_unresolved')` |
 | ck_ae_07 | `reconciliation_state IN ('provisional','reconciled','pending_reconciliation')` |
 | ck_ae_08 | `revision_no > 0` |
 | ck_ae_09 | `is_current IN (0,1)` |
 
 **Transactional guards:** Presence remains present for valid missing-out; completeness is separate. Reviewed unknown factual end stays NULL. Late measured against required arrival after leave, exact seconds before display rounding. Append revision then mark old current_marker NULL within same transaction.
+
+**Accepted attendance projection clarification — G-000 / T-0003, 24 October 2026 (Asia/Jakarta).** The project owner accepted the bounded T-0002 technical proposal, including `inconsistent` completeness and independent late/early representation, while preserving PRD behavior. The original 23 October schema approval remains recorded in §1; this is an accepted clarification of that v1.0 baseline, not implementation evidence.
+
+- For one retained evaluation ID E, use its effective bounds, `policy_resolution_id`, `source_fingerprint`, `calculation_version` and its own §11.6 required/excused/established-work segments. Preserve the referenced occurrence revision, original local start date/timezone, source segment IDs and reviewed basis. Never reconstruct an old E from current policy, leave state or employment boundaries.
+- Compare exact integer half-microsecond ticks: `2 × UTC_microseconds + half_us` for segment endpoints. For a nonempty resolved required-segment union, S is its earliest start and F its latest end; breaks and approved excused segments are excluded. A reviewed termination expectation requires its explicit retained segment basis; never truncate automatically at employment end.
+- `punctuality` describes arrival, not the whole punctuality outcome. For valid effective arrival I establishing presence on remaining required work, `late = I > S + late_grace_seconds × 2,000,000`; late duration is I−S when late, otherwise zero. Grace is not subtracted from the duration. Independently, for a factually established valid effective end O of the same occurrence with O>I, `earlyDeparture = O < F`. Equality at either threshold is not late/early respectively. Both flags may be true. No additional persisted flag column is required.
+- Server DTOs expose those nullable flags independently, with the evaluation/source/calculation references needed for reproduction. Missing/unevaluable arrival yields NULL late; unknown/untrusted end yields NULL earlyDeparture. Empty required work or unresolved expectation/evidence yields NULL/N/A for the comparison it cannot support. Never infer early departure from missing out, or hide earlyDeparture=true behind `on_time`. Vue only renders authorized server values.
+- `completeness=inconsistent` distinguishes known contradictory attendance evidence from missing/unknown evidence. Keep `ck_ae_01` unchanged: a contradictory or unestablished effective endpoint stays NULL, with the original/candidate evidence retained in its existing restricted source/review context. An inverted/equal proposed pair is not a valid ordinary clock-out or an applied factual correction; do not add a day, fabricate evidence, weaken event guards or classify a valid record as inconsistent merely because a bad correction was proposed. Preserve valid presence independently where established; unresolved conflict/review-required coverage remains excluded from metrics and visibly owned for review.
+- Reviewed unknown end retains NULL `effective_out_at`, `missing_out`, `reviewed_unresolved` and the approved correction link; it is not complete and never extends employment/account eligibility. Resolve the required-work basis explicitly before treating review-required coverage as evaluable. A raw out just after second-half leave starts does not establish work through the excused segment.
+- Append corrected E2 with its own segment/source references and correction linkage; retain E1, ordinary events and original photos. Reporting facts/drill/CSV use the referenced evaluation, source revision/fingerprint, cutoff and metric version, not a mutable current exception. Missing-out retains valid presence/incompleteness under PRD §19; no metric formula changes. See §20 INV-12 and TASK T-0002's truth table and T-0003 approval/evidence.
 
 ### 11.6 `attendance_evaluation_segments`
 
@@ -5176,7 +5186,7 @@ The following is the complete cross-owner FK list, including audit/actor/configu
 | INV-09 | At most one ordinary in/out; retained first receipt | uq_ar_occurrence; uq_aev_action/command/file; uq_cmd_intent | Employee/receipt/record locks; identical HMAC retry returns prior result; different payload conflict | IDEMPOTENCY_CONFLICT / COMMAND_IN_PROGRESS, never duplicate | AC-13–AC-16 |
 | INV-10 | Exact clock/GPS/photo validation | Typed policy/evidence/manifest FKs; allowed event states | Current window/account/employment, unrounded geofence and genuine decoded photo outside locks then recheck inside; synthetic deployment+dataset | PHOTO_INVALID / GPS_ACCURACY / GPS_OUTSIDE / WINDOW_CLOSED; no event | AC-15, AC-17–AC-18, AC-47–AC-48 |
 | INV-11 | Correction independent, once, stale-safe | uq_ac_pending/applied; correction status CHECK | Reviewer != submitter and linked affected employee, current permissions/record version, factual basis; original immutable | SELF_REVIEW / STALE_VERSION; no effective change | AC-19–AC-20, AC-30, AC-43 |
-| INV-12 | Presence/completeness and work/leave agreement | Independent evaluation dimensions, immutable versions/segments | Employee anchor serializes clock/final approve/correct; raw out does not prove all leave work; review uncertain end | WORK_CONFLICT / REVIEW_REQUIRED; no fabricated close or absence | AC-19, AC-21, AC-29, AC-43 |
+| INV-12 | Presence/completeness and work/leave agreement | Independent evaluation dimensions, immutable versions/segments; ck_ae_05 includes inconsistent while ck_ae_01 retains valid effective ordering | Employee anchor serializes clock/final approve/correct; §11.5 version-bound late/early projections are independent; raw out does not prove all leave work; review uncertain end | WORK_CONFLICT / REVIEW_REQUIRED; no fabricated close or absence | AC-19, AC-21, AC-29, AC-43 |
 | INV-13 | Exact signed ledger with no mutable balance | DECIMAL14,4 sign CHECK, effect uniqueness, FK bucket/period/source | Employee/scope/bucket; SUM posted and active reserve, policy eligibility, four-decimal cumulative HALF_UP | INSUFFICIENT_POSTED_ENTITLEMENT / invalid linkage; rollback | AC-22, AC-24, AC-27, AC-44–AC-45 |
 | INV-14 | Cross-year no borrowing; exact half-day segments | FK item period/occurrence/policy; units CHECK; half-us endpoint bits | All items/buckets locked before any allocation; deterministic expiry NULL-last; no forecast credit | ENTITLEMENT_PERIOD_UNFUNDED with authorized period reason; no partial reserves | AC-21–AC-22, AC-44–AC-45 |
 | INV-15 | Carry/expiry/reversal retained lineage | FK root/parent/transfer/original; uq_lle_transfer/effect/consumption/reversal/release_expiry | Employee/buckets; equal paired transfer, cap/expiry, reserve protection, linked expiry on returned expired units, cumulative partial reversal≤original | LINEAGE_CONFLICT / REVERSAL_EXCEEDS_SOURCE; no duplicate funds | AC-24–AC-27, AC-45 |
